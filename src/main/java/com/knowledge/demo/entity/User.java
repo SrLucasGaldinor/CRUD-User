@@ -33,8 +33,7 @@ public class User {
 	private String email;
 	
 	private String password;
-		
-	@Column(name = "phone", unique = true)
+	
 	private String phone;
 	
 	@Column(name = "cpf", unique = true)
@@ -42,6 +41,14 @@ public class User {
 	
 	private boolean active = true;
 	
+	public User(String username, String email, String password, String phone, String cpf) {
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.phone = phone;
+		this.cpf = cpf;
+	}
+		
 	public void activated() {
 		this.active = true;
 	}
