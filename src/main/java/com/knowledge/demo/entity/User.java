@@ -1,7 +1,5 @@
 package com.knowledge.demo.entity;
 
-import java.util.Objects;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +17,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 @Builder
 @Entity
 @Table(name = "tb_user")
@@ -29,14 +29,14 @@ public class User {
 	
 	private String username;
 	
-	@Column(name = "email", unique = true)
+	@Column(unique = true)
 	private String email;
 	
 	private String password;
 	
 	private String phone;
 	
-	@Column(name = "cpf", unique = true)
+	@Column(unique = true)
 	private String cpf;
 	
 	private boolean active = true;
@@ -55,22 +55,5 @@ public class User {
 	
 	public void deactivated() {
 		this.active = false;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		return Objects.equals(id, other.id);
 	}
 }

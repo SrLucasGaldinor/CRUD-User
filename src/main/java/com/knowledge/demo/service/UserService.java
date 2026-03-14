@@ -1,7 +1,6 @@
 package com.knowledge.demo.service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -15,31 +14,38 @@ import com.knowledge.demo.repository.UserRepository;
 public class UserService {
 
 	private final UserRepository repository;
-	
+
 	public UserService(UserRepository repository) {
 		this.repository = repository;
 	}
-	
+
 	public List<UserResponseDTO> findAll() {
-		return repository.findAllByActiveTrue()
-						 .stream().map(this::toResponse)
-						 .collect(Collectors.toList());
+		return repository.findAllByActiveTrue().stream().map(this::toResponse).collect(Collectors.toList());
 	}
-	
+
 	public UserResponseDTO create(UserCreateDTO dto) {
-		User user = repository.save(new User(dto.username(),
-											 dto.email(),
-											 dto.password(),
-											 dto.phone(),
-											 dto.cpf()));
 		
-		return toResponse(user);
+		if(repository.existsByEmail(dto.email())) {
+			throw new RuntimeException("Email já cadastrado!");
+		}
+		
+		if(repository.existsByCpf(dto.cpf())) {
+			throw new RuntimeException("CPF já cadastrado!");
+		}
+		
+		User user = User.builder()
+						.username(dto.username())
+						.email(dto.email())
+						.password(dto.password())
+						.phone(dto.phone())
+						.cpf(dto.cpf())
+						.active(true)
+						.build();
+		
+		return toResponse(repository.save(user));
 	}
-	
+
 	private UserResponseDTO toResponse(User user) {
-		return new UserResponseDTO(user.getUsername(),
-								   user.getEmail(),
-								   user.getPhone(),
-								   user.getCpf());
+		return new UserResponseDTO(user.getUsername(), user.getEmail(), user.getPhone(), user.getCpf());
 	}
 }
