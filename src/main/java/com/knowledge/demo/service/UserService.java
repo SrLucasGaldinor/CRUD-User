@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.knowledge.demo.DTO.UserCreateDTO;
 import com.knowledge.demo.DTO.UserResponseDTO;
 import com.knowledge.demo.entity.User;
+import com.knowledge.demo.exception.BusinessException;
 import com.knowledge.demo.repository.UserRepository;
 
 @Service
@@ -26,11 +27,11 @@ public class UserService {
 	public UserResponseDTO create(UserCreateDTO dto) {
 		
 		if(repository.existsByEmail(dto.email())) {
-			throw new RuntimeException("Email já cadastrado!");
+			throw new BusinessException("Email já cadastrado!");
 		}
 		
 		if(repository.existsByCpf(dto.cpf())) {
-			throw new RuntimeException("CPF já cadastrado!");
+			throw new BusinessException("CPF já cadastrado!");
 		}
 		
 		User user = User.builder()
