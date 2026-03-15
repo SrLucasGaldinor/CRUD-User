@@ -39,6 +39,7 @@ public class User {
 	@Column(unique = true)
 	private String cpf;
 	
+	@Builder.Default
 	private boolean active = true;
 	
 	public User(String username, String email, String password, String phone, String cpf) {
