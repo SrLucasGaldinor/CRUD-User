@@ -19,8 +19,18 @@ public class ResourceExceptionHandler {
 											  status.value(), 
 											  "Violação de regra de negócio",
 											  e.getMessage(),
-											  request.getRequestURI()
-											  );
+											  request.getRequestURI());
+		return ResponseEntity.status(status).body(err);
+	}
+	
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public ResponseEntity<StandardError> resourceNotFoundError(ResourceNotFoundException e, HttpServletRequest request) {
+		HttpStatus status = HttpStatus.NOT_FOUND;
+		StandardError err = new StandardError(Instant.now(),
+											  status.value(),
+											  "Recurso não encontrado",
+											  e.getMessage(),
+											  request.getRequestURI());
 		return ResponseEntity.status(status).body(err);
 	}
 }
