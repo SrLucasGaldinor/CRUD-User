@@ -12,7 +12,13 @@ import com.knowledge.demo.entity.User;
 public interface UserRepository extends JpaRepository<User, Long>{
 
 	List<User> findAllByActiveTrue();
+	
 	Optional<User> findByIdAndActiveTrue(Long id);
+	
 	boolean existsByEmail(String email);
+
+	boolean existsByEmailAndIdNot(String email, Long id);
+	
 	boolean existsByCpf(String cpf);
+	
 }

@@ -50,11 +50,11 @@ public class User {
 		this.cpf = cpf;
 	}
 		
-	public void activated() {
+	public void activate() {
 		this.active = true;
 	}
 	
-	public void deactivated() {
+	public void deactivate() {
 		this.active = false;
 	}
 }

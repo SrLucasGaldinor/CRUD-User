@@ -56,16 +56,27 @@ public class UserService {
 	public UserResponseDTO update(Long id, UserUpdateDTO dto) {
 		User userEntity = repository.findByIdAndActiveTrue(id).orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado."));
 		
-		User userUpdate = User.builder()
-				.id(userEntity.getId())
-				.username(dto.username() != null ? dto.username() : userEntity.getUsername())
-				.email(dto.email() != null ? dto.email() : userEntity.getEmail())
-				.password(dto.password() != null ? dto.password() : userEntity.getPassword())
-				.phone(dto.phone() != null ? dto.phone() : userEntity.getPhone())
-				.cpf(userEntity.getCpf())
-				.build();
+		if(dto.email() != null && repository.existsByEmailAndIdNot(dto.email(), id)) {
+			throw new BusinessException("Este E-mail já está sendo usado por outro usuário.");
+		}
 		
-		return toResponse(repository.save(userUpdate));
+		updateData(userEntity, dto);
+		
+		return toResponse(repository.save(userEntity));
+	}
+	
+	private void updateData(User userEntity, UserUpdateDTO dto) {
+		if(dto.username() != null) userEntity.setUsername(dto.username());
+		if(dto.email() != null) userEntity.setEmail(dto.email());
+		if(dto.password() != null) userEntity.setPassword(dto.password());
+		if(dto.phone() != null) userEntity.setPhone(dto.phone());
+	}
+	
+	public void delete(Long id) {
+		User userEntity = repository.findByIdAndActiveTrue(id)
+								    .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado!"));
+		userEntity.deactivate();
+		repository.save(userEntity);
 	}
 
 	private UserResponseDTO toResponse(User user) {
