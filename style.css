@@ -1,0 +1,91 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #1a1a1a;
+    color: aliceblue;
+    background-image: url("IMAGENS CSS/fundo.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}   
+h1{
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #1900fc, #ff0101);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: rgba(255, 249, 249, 0.331);
+    text-align: center;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 2);
+
+}
+.login-group{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.register-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+form{
+    background-color: rgba(5, 5, 5, 0.6);
+    backdrop-filter: blur(5px);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid aliceblue;
+   
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 450px;
+    margin: 20px;
+}
+#msg-feedback{
+    display: none;
+    background-color: #52da72; 
+    color: #044212;
+    border: 5px solid #b6ecb6;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+input{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid aliceblue;
+    background: aliceblue;
+    margin-top: 5px;
+}
+
+.submit{
+    width: 100%;
+    padding: 400000xp;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    background-color: #0091ff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3;
+}
+.submit:hover{
+    background-color: #008af4;
+    transform: scale(1.02);
+    text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.5);
+}
+.login-group a {
+color: rgb(40, 154, 254);
+}
+.register-group a{
+    color: #0091ff;
+}
+
