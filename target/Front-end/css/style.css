@@ -28,6 +28,25 @@ h1{
     display: flex;
     flex-direction: column;
     text-align: left;
+
+    position: relative; /* ESSENCIAL: Prende o botão aqui dentro */
+    width: 100%;        /* Garante que a div ocupe a largura total */
+    margin-bottom: 10px; 
+}
+#btn-eye {
+    position: absolute;
+    top: 23px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+    padding: 0;
+    z-index: 10;        /* Garante que o olho fique na frente do campo de texto */
+}
+
+/* 3. Um pequeno ajuste no input para o texto não ficar embaixo do olho */
+#password {
+    padding-right: 50px !important;
 }
 .register-group {
     display: flex;
@@ -76,7 +95,7 @@ button[type="submit"],
     text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.5);
 }
 .login-group a {
-    color: rgb(40, 154, 254);
+    color: #0091ff;
 }
 .register-group a{
     color: #0091ff;
@@ -98,3 +117,6 @@ button[type="submit"],
     text-align: center;
     transition: all 0.3 ease;
 } 
+.home-group a {
+    position: center;
+}

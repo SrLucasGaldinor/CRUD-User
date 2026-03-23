@@ -8,7 +8,7 @@
 <body>
     <h1>Login Demo</h1>
     <p></p>
-    <form action="/Login" method="post">
+    <form id="login-form" action="/Login" method="post">
         <div class="login-group">
             <label for="email">Your E-mail</label> 
             <input type="email" 
@@ -21,10 +21,13 @@
         <div class="login-group">
             <label for="password">Your password</label> 
             <input type="password"
-            id="password"
-            name="password"
-            placeholder="Minimum 10 characters"
-            required/>
+                   id="password"
+                   name="password"
+                   placeholder="Minimum 10 characters"
+                   required/>
+
+            <button type="button" id="btn-eye"
+                    style="position: absolute; right: 10px; border: none; background: none; font-size: 25px; ">👁️</button>
         </div>
 
         <button class="submit">Log in</button>
@@ -36,6 +39,6 @@
             <a href="/CRUD-User/target/Front-end/html/register.html"> Register Now</a>
         </p></div>
         </form>
-        <script scr="/CRUD-User/target/Front-end/js/script.js"></script>
+        <script src="/CRUD-User/target/Front-end/js/script.js"></script>
 </body>
 </html>

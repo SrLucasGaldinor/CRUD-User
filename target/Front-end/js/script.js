@@ -3,6 +3,39 @@
 const form = document.querySelector('form');
 const msg = document.getElementById('msg-feedback');
 
+const formLogin = document.getElementById('login-form');
+if (formLogin){
+    formLogin.addEventListener('submit', function(event) {
+        
+        const emailLogin = document.getElementById('email').value;
+        const passwordLogin = document.getElementById('password').value;
+        
+        if(emailLogin === '' || passwordLogin === ''){
+            event.preventDefault();
+            alert('Please fill in your email and password to enter.');
+            return;
+        } else{
+        alert('Login successfully performed! Welcome');
+        window.location.href = "home.html"
+        }
+    });
+}
+const eyeButton = document.getElementById('btn-eye');
+const fieldPassword = document.getElementById('password');
+
+if (eyeButton && fieldPassword){
+    eyeButton.addEventListener('click', function() {
+        if(fieldPassword.type === 'password'){
+            fieldPassword.type = 'text';
+            eyeButton.textContent = '🔒';
+        }
+        else {
+            fieldPassword.type = 'password';
+            eyeButton.textContent = '👁️';
+        }
+    })
+}
+
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
