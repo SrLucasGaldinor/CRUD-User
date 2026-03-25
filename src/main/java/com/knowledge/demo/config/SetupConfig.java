@@ -1,4 +1,4 @@
-package com.knowledge.demo;
+package com.knowledge.demo.config;
 
 import java.util.Arrays;
 
