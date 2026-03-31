@@ -1,17 +1,17 @@
-package com.knowledge.demo.service;
+package com.knowledge.projeto.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.knowledge.demo.DTO.UserCreateDTO;
-import com.knowledge.demo.DTO.UserResponseDTO;
-import com.knowledge.demo.DTO.UserUpdateDTO;
-import com.knowledge.demo.entity.User;
-import com.knowledge.demo.exception.BusinessException;
-import com.knowledge.demo.exception.ResourceNotFoundException;
-import com.knowledge.demo.repository.UserRepository;
+import com.knowledge.projeto.DTO.UserCreateDTO;
+import com.knowledge.projeto.DTO.UserResponseDTO;
+import com.knowledge.projeto.DTO.UserUpdateDTO;
+import com.knowledge.projeto.entity.User;
+import com.knowledge.projeto.exception.BusinessException;
+import com.knowledge.projeto.exception.ResourceNotFoundException;
+import com.knowledge.projeto.repository.UserRepository;
 
 @Service
 public class UserService {

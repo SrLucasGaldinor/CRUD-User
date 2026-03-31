@@ -1,4 +1,4 @@
-package com.knowledge.demo.exception;
+package com.knowledge.projeto.exception;
 
 import java.time.Instant;
 

@@ -1,4 +1,4 @@
-package com.knowledge.demo.config.security;
+package com.knowledge.projeto.infra.security;
 
 import java.time.Instant;
 
@@ -9,7 +9,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.knowledge.demo.entity.User;
+import com.knowledge.projeto.entity.User;
 
 @Service
 public class TokenService {

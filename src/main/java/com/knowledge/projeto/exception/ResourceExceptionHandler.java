@@ -1,4 +1,4 @@
-package com.knowledge.demo.exception;
+package com.knowledge.projeto.exception;
 
 import java.time.Instant;
 
@@ -32,5 +32,16 @@ public class ResourceExceptionHandler {
 											  e.getMessage(),
 											  request.getRequestURI());
 		return ResponseEntity.status(status).body(err);
+	}
+	
+	@ExceptionHandler(InvalidPasswordException.class)
+	public ResponseEntity<StandardError> invalidPasswordError(InvalidPasswordException e, HttpServletRequest request) {
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		StandardError err = new StandardError(Instant.now(),
+											   status.value(),
+											   "Invalid password!",
+											   e.getMessage(),
+											   request.getRequestURI());
+		return ResponseEntity.status(status).body(err);	
 	}
 }

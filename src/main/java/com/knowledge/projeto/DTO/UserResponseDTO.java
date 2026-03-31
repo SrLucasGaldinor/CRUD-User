@@ -1,4 +1,4 @@
-package com.knowledge.demo.DTO;
+package com.knowledge.projeto.DTO;
 
 public record UserResponseDTO (String username, String email, String phone, String cpf) {
 	

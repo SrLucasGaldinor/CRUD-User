@@ -1,4 +1,4 @@
-package com.knowledge.demo.config.security;
+package com.knowledge.projeto.infra.security;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -9,9 +9,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.knowledge.demo.entity.User;
-import com.knowledge.demo.exception.ResourceNotFoundException;
-import com.knowledge.demo.repository.UserRepository;
+import com.knowledge.projeto.entity.User;
+import com.knowledge.projeto.exception.ResourceNotFoundException;
+import com.knowledge.projeto.repository.UserRepository;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

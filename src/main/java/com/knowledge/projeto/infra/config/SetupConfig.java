@@ -1,4 +1,4 @@
-package com.knowledge.demo.config;
+package com.knowledge.projeto.infra.config;
 
 import java.util.Arrays;
 
@@ -6,9 +6,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.knowledge.demo.entity.User;
-import com.knowledge.demo.repository.UserRepository;
+import com.knowledge.projeto.entity.User;
+import com.knowledge.projeto.repository.UserRepository;
 
 @Configuration
 @Profile("test")
@@ -16,25 +17,23 @@ public class SetupConfig {
 
 
 	private final UserRepository repository;
+	private final PasswordEncoder passwordEncoder;
 
-	public SetupConfig(UserRepository repository) {
+	public SetupConfig(UserRepository repository, PasswordEncoder passwordEncoder) {
 		this.repository = repository;
+		this.passwordEncoder = passwordEncoder;
 	}
 
     @Bean
     CommandLineRunner initDatabase() {
 		return args -> {
-			User user1 = User.builder().username("Erick").email("erick@email.com").password("123456").phone("9999-9999")
-					.cpf("111.111.111-11").build();
-
-			User user2 = User.builder().username("Lucas").email("lucas@email.com").password("123456").phone("9999-9999")
-					.cpf("222.222.222-22").build();
-
-			User user3 = User.builder().username("Gustavo").email("gustavo@email.com").password("123456")
-					.phone("9999-9999").cpf("333.333.333-33").build();
-
-			repository.saveAll(Arrays.asList(user1, user2, user3));
+			User user = User.builder().username("Lucas")
+									  .email("lucas@email.com")
+									  .password(passwordEncoder.encode("123456"))
+									  .phone("9999-9999")
+									  .cpf("222.222.222-22").build();
 			
+			repository.saveAll(Arrays.asList(user));
 			System.out.println("Dados inicializados com sucesso!");
 		};
 	}

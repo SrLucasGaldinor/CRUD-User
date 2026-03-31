@@ -1,4 +1,4 @@
-package com.knowledge.demo.controller;
+package com.knowledge.projeto.controller;
 
 import java.util.List;
 
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.knowledge.demo.DTO.UserCreateDTO;
-import com.knowledge.demo.DTO.UserResponseDTO;
-import com.knowledge.demo.DTO.UserUpdateDTO;
-import com.knowledge.demo.service.UserService;
+import com.knowledge.projeto.DTO.UserCreateDTO;
+import com.knowledge.projeto.DTO.UserResponseDTO;
+import com.knowledge.projeto.DTO.UserUpdateDTO;
+import com.knowledge.projeto.service.UserService;
 
 @RestController
 @RequestMapping("/users")

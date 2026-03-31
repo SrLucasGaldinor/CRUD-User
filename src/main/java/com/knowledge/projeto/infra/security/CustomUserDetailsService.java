@@ -1,11 +1,13 @@
-package com.knowledge.demo.config.security;
+package com.knowledge.projeto.infra.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 
-import com.knowledge.demo.repository.UserRepository;
+import com.knowledge.projeto.repository.UserRepository;
 
+@Component
 public class CustomUserDetailsService implements UserDetailsService {
 
 	private final UserRepository userRepository;
